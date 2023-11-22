@@ -27,7 +27,7 @@ loginRouter.post('/', async (req, res) => {
     
     const token=jwt.sign(payload,JWT_SECRET)
      res.json({
-            message:'password is correct',token, username: users.username, name: user.name
+            message:'password is correct',token, username: users.username
         })
     
 })

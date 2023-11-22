@@ -5,6 +5,13 @@ const userRouter = require('express').Router();
 
 userRouter.post('/', async (req, res) => {
     const { username, name, password } = req.body;
+    const existingUser = await user.findOne({ username });
+
+    if (existingUser) {
+        return res.json({
+             message: 'This email ID is already in use. Please choose another one.' 
+        })
+    }
 
     const passwordHash = await bcrypt.hash(password, 10);
 
