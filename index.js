@@ -3,6 +3,7 @@ const express = require('express');
 const { MONGODB_URI, PORT } = require('./utilies/config');
 const cors=require('cors');
 const userRouter = require('./controllers/register');
+const loginRouter = require('./controllers/longin');
 
 const app = express();
 app.use(cors());
@@ -16,6 +17,7 @@ mongoose.connect(MONGODB_URI)
     });
  
     app.use('/api/user',userRouter)
+    app.use('/api/login',loginRouter)
 
 app.listen(PORT, (req, res) => {
     console.log(`server running http://localhost:${PORT}` )
