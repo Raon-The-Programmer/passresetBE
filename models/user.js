@@ -4,6 +4,7 @@ const userScheme = new mongoose.Schema({
     username: String,
     name: String,
     passwordHash: String,
+    resetPassword:String,
     createdAt: {
         type: Date,
         default: Date.now
