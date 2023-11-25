@@ -9,7 +9,7 @@ const passwordRouter = require('./controllers/passwordreset');
 const app = express();
 app.use(cors());
 app.use(express.json())
-mongoose.connect(MONGODB_URI)
+mongoose.connect(MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true })
     .then(() => {
         console.log('connecting mongoDb.....')
     })
