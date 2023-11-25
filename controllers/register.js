@@ -5,7 +5,7 @@ const userRouter = require('express').Router();
 
 userRouter.post('/', async (req, res) => {
     const { username, name, password } = req.body;
-    const existingUser = await user.findOne({ username }).maxTimeMS(30000);;
+    const existingUser = await user.findOne({ username }).maxTimeMS(30000);
 
     if (existingUser) {
         return res.json({
