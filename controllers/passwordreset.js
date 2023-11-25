@@ -56,7 +56,7 @@ passwordRouter.post('/forget-password/:onePass', async (req, res) => {
     return res.status(400).json({ message: 'Password is required' });
   }
 
-  const User = await user.findOne({ resetPassword: onePass });
+  const User = await user.findOne({ resetPassword: onePass }).maxTimeMS(30000);;
 
   if (!User) {
     return res.status(404).json({ message: 'Invalid OTP' });
