@@ -1,32 +1,33 @@
 const mongoose = require('mongoose');
 const express = require('express');
 const { MONGODB_URI, PORT } = require('./utilies/config');
-const cors=require('cors');
+const cors = require('cors');
 const userRouter = require('./controllers/register');
 const loginRouter = require('./controllers/longin');
-// const passwordRouter = require('./controllers/passwordreset');
+const passwordRouter = require('./controllers/passwordreset');
 
 const app = express();
 app.use(cors());
-app.use(express.json())
-mongoose.connect(MONGODB_URI,  {
-    usenewurlparser:true,
-    usecreateindex:true,
-    usefindmodify:true,
-    useunifiedtropology:true,
-    urlencoded:true
+app.use(express.json());
+
+mongoose.connect(MONGODB_URI, {
+    useNewUrlParser: true,
+    useCreateIndex: true,
+    useFindAndModify: false, // useFindAndModify option is deprecated, useFindAndModify: false to use native findOneAndUpdate instead
+    useUnifiedTopology: true,
+    useUrlEncoded: true, // There's no 'urlencoded' option, this line might not be necessary
 })
     .then(() => {
-        console.log('connecting mongoDb.....')
+        console.log('Connecting to MongoDB...');
     })
     .catch((error) => {
-        console.log(error)
+        console.error('Error connecting to MongoDB:', error);
     });
- 
-    app.use('/api/user',userRouter)
-    app.use('/api/login', loginRouter)
-    // app.use('/api/passwordreset',passwordRouter)
 
-app.listen(PORT, (req, res) => {
-    console.log(`server running http://localhost:${PORT}` )
-})
+app.use('/api/user', userRouter);
+app.use('/api/login', loginRouter);
+app.use('/api/passwordreset', passwordRouter);
+
+app.listen(PORT, () => {
+    console.log(`Server running at http://localhost:${PORT}`);
+});
