@@ -13,9 +13,9 @@ app.use(express.json());
 mongoose.connect(MONGODB_URI, {
     useNewUrlParser: true,
     useCreateIndex: true,
-    useFindAndModify: false, // useFindAndModify option is deprecated, useFindAndModify: false to use native findOneAndUpdate instead
+    useFindAndModify: false, 
     useUnifiedTopology: true,
-    useUrlEncoded: true, // There's no 'urlencoded' option, this line might not be necessary
+    useUrlEncoded: true, 
 })
     .then(() => {
         console.log('Connecting to MongoDB...');
