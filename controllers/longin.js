@@ -6,7 +6,7 @@ const { JWT_SECRET } = require('../utilies/config');
 
 loginRouter.post('/', async (req, res) => {
     const { username, password } = req.body;
-    const users =await user.findOne({ username }).maxTimeMS(30000);;
+    const users =await user.findOne({ username }).maxTimeMS(30000);
 
     if (!users) {
         return res.json({
