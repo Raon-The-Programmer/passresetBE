@@ -12,10 +12,7 @@ app.use(express.json());
 
 mongoose.connect(MONGODB_URI, {
     useNewUrlParser: true,
-    useCreateIndex: true,
-    useFindAndModify: false, 
     useUnifiedTopology: true,
-    useUrlEncoded: true, 
 })
     .then(() => {
         console.log('Connecting to MongoDB...');
