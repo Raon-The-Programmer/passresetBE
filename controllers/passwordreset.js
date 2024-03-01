@@ -23,13 +23,13 @@ passwordRouter.post('/forget-password', async (req, res) => {
   const transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
-      user: 'parthapn2017@gmail.com',
+      user: 'msdrahuljohn@gmail.com',
       pass: OTP,
     },
   });
 
   const mailOptions = {
-    from: 'Password_resest_noreply@gmail.com',
+    from: 'msdrahuljohn@gmail.com',
     to: existingUser.username,
     subject: 'Reset Your Password',
     text: `you are receiving this email because you request has passwords reset for your account .\n\n please use the following  OTP to reset your password:${onePass} \n\n if you did not request a password to ignore this email. `,
